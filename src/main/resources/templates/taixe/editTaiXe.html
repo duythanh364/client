@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Cập nhật Tài xế</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/header.css">
+</head>
+<style>
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#495a5e;
+
+}
+.insert{
+
+    padding: 0;
+    margin: 0;
+}
+body{
+    margin: 0;
+    padding : 0;
+    background-color: #aebce4;
+}
+header {
+	height: 70px;
+	width: 80%;
+	background-color: rgb(231 215 230);
+	margin: auto;
+	margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+.container {
+	height: 450px;
+	width: 80%;
+	background-color: #d0d1e1;
+	margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.wrapper{
+    width: 50%;
+}
+.main__title{
+    font-size: 30px;
+}
+.title{
+    display: block;
+    font-size: 30px;
+    padding-left: 170px;
+}
+input{
+    display: block;
+    width: 300px;
+}
+span.button{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+button{
+    border-radius: 5px;
+    width: 30%;
+    height: 35px;
+    background-color: #eccccc;
+}
+td{
+    font-weight: 500;
+}
+tr{
+    /* display: block; */
+    margin-top: 10px;
+}
+button.button__back{
+	position: fixed;
+	width: 100px;
+	left: 160px;
+}
+</style>
+<body>
+	<div class="insert">
+		<div th:replace="layout/header"> </div>
+			<div class="container">
+				<div class="wrapper">
+					<span class="title">Cập nhật thông tin tài xế</span>
+					<form method="POST" th:object="${taixe}">
+						<div class="table__content">
+							<table>
+								<tr>
+									<td>ID:</td>
+									<td th:text="*{id}">Id</td>
+									<td><input type="hidden" th:field="*{id}" /></td>
+								</tr>
+								<tr>
+									<td>CMT</td>
+									<td><input type="text" th:field="*{CMT}" maxlength="12" minlength="12" required="required" /></td>
+								</tr>
+								<tr>
+									<td>Họ tên</td>
+									<td><input type="text" th:field="*{ten}" required="required" /></td>
+								</tr>
+								<tr>
+									<td>Mã bằng lái</td>
+									<td><input type="text" th:field="*{maSoBangLai}" required="required" /></td>
+								</tr>
+								<tr>
+									<td>Loại bằng lái:</td>
+									<td><input type="text" th:field="*{loaiBangLai}"  required="required"/></td>
+								</tr>
+								<tr>
+									<td>Địa chỉ</td>
+									<td><input type="text" th:field="*{diaChi}" required="required" /></td>
+								</tr>
+								<tr>
+									<td>Ngày sinh</td>
+									<td><input type="date" th:field="*{ngaySinh}" required="required" /></td>
+								</tr>
+								<tr>
+									<td>Thâm niên</td>
+									<td><input type="number" min=0 th:field="*{thamNien}" required="required"/></td>
+								</tr>
+								<tr>
+									<td>Bậc lương</td>
+									<td>
+										<select th:name="bacluong">
+											<option th:each="bac: ${listLuong}"
+													th:value="${bac.id}"
+													th:text="${bac.heSoLuong}">
+											</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><span class="button"><button type="submit">Lưu</button></span></td>
+								</tr>
+							</table>
+<!--							<span class="button">-->
+<!--								<button class="button__back">-->
+<!--									<i class="fa fa-backward" aria-hidden="true"></i>-->
+<!--									Trở về-->
+<!--								</button>-->
+<!--					    	</span>-->
+						</div>
+					</form>
+				</div>
+			</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementsByClassName("button__back")[0].onclick = function () {
+			window.location.href = ("/taixe");
+		};
+	</script>
+</body>
+</html>

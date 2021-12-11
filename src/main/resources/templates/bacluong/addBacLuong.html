@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<meta charset="UTF-8">
+<title>Thêm mới Bậc lương</title>
+	<link rel="stylesheet" href="/header.css">
+
+</head>
+<style>
+	html{
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		color:#495a5e;
+	}
+.insert{
+    padding: 0;
+    margin: 0;
+}
+body{
+    margin: 0;
+    padding : 0;
+    background-color: #aebce4;
+}
+header { 
+	height: 70px;
+	width: 80%;
+	margin: auto;
+	margin-bottom: 15px;
+	display: flex;
+	justify-content: center;
+	background-color: rgb(231 215 230);
+}
+.container {
+	height: 450px;
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	background-color: #d0d1e1;
+}
+.wrapper{
+    width: 50%;
+}
+.main__title{
+    font-size: 30px;
+}
+.title{
+    display: block;
+    font-size: 30px;
+    padding-left: 170px;
+}
+input,select{
+    display: block;
+    width: 300px;
+}
+span.button{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+button{
+    border-radius: 5px;
+    width: 30%;
+    height: 35px;
+    background-color: #eccccc;
+}
+td{
+    font-weight: 500;
+}
+tr{
+
+    margin-top: 10px;
+}
+	button.button__back{
+		position: fixed;
+		width: 100px;
+		left: 160px;
+	}
+	p.error{
+		margin-top: 0;
+		margin-bottom: 0;
+		height: 35px;
+	}
+</style>
+<body>
+	<div class="insert">
+		<div th:replace="layout/header"> </div>
+		<div class="container">
+			<div class="wrapper">
+				<span class="title">Thêm mới tài xế</span>
+				<p class="error" th:if="${error}"
+				   style="color:#ff0026;
+                   font-family: 'Segoe UI';
+                   font-size: 20px;
+                   font-weight: 600;
+                   padding-left: 195px;
+                    ">
+					Hệ số lương đã tồn tại
+				</p>
+				<form method="POST" th:object="${bacluong}">
+					<div class="table__content">
+						<table>
+							<tr>
+								<td>Hệ số lương</td>
+								<td><input type="text" th:field="*{heSoLuong}" required="required" /></td>
+							</tr>
+							<tr>
+								<td>Lương cơ bản</td>
+								<td><input type="text" th:field="*{luongCoBan}" required="required" /></td>
+							</tr>
+							<tr>
+								<td>Lương mỗi chuyến</td>
+								<td><input type="text" th:field="*{luongMoiChuyen}" required="required" /></td>
+							</tr>
+
+							<tr>
+								<td></td>
+								<td><span class="button"><button type="submit">Lưu</button></span></td>
+							</tr>
+					  </table>
+
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.getElementsByClassName("button__back")[0].onclick = function () {
+			window.location.href = ("/bacluong");
+		};
+	</script>
+</body>
+</html>

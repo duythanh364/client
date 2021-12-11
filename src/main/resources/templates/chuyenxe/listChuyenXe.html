@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Danh sách Chuyến xe</title>
+	<link rel="stylesheet" href="/header.css">
+</head>
+<style>
+	html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#495a5e;
+}
+.insert{
+    
+    padding: 0;
+    margin: 0;
+}
+body{
+    margin: 0;
+    padding : 0;
+    background-color: #aebce4;
+}
+header { 
+	height: 70px;
+	width: 80%;
+	background-color: rgb(231 215 230);
+	margin: auto;
+	margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+.container { 	
+	height: 800px;
+	width: 80%;
+	background-color: #d0d1e1;
+	margin: auto;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+}
+.wrapper{
+    width: 90%;
+    text-align: center;
+}
+.title{
+	font-size: 30px;
+	display: flex;
+	justify-content: center;
+	text-decoration: none;
+}
+input{
+    display: block;
+    width: 300px;
+}
+span.button{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+button{
+    border-radius: 5px;
+    width: 30%;
+    height: 35px;
+    background-color: #ad9a9a;
+}
+td{
+    font-weight: 500;
+}
+form{
+	display: flex;
+    justify-content: center;
+	height: 30px;
+}
+input[type="submit"]{
+	width: 10%;
+	border-radius: 3px;
+}
+span.insert{
+	display: flex;
+    justify-content: center;
+	margin: 20px;
+}
+span.insert a{
+	text-decoration: none;
+	color: #086177;
+	font-size: 20px;
+	font-weight: 600;
+}
+span.insert:hover a{
+    color: rgb(173, 24, 163);
+}
+.table__content{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding-left: 50px;
+}
+table{
+	width: 100%;
+}
+th,td{
+	border : 2px solid #999999;
+	
+}
+tbody{
+	display: inline-block;
+	border : 2px solid #999999;
+}
+td a:hover{
+    color:rgb(173, 24, 163);
+    cursor: pointer;
+}
+input[type="submit"]{
+    color: #086177;
+	font-size: 15px;
+    font-weight: 700;
+}
+input[type="submit"]:hover {
+    color:rgb(173, 24, 163);
+    cursor: pointer;
+    
+}
+
+</style>
+<body>
+	<div class="insert">
+		<div th:replace="layout/header"> </div>
+		<div class="container">
+			<div class="wrapper">
+				<span class="title">Danh sách Chuyến xe</span>
+				<form method="get" action="/chuyenxe/search">
+					<select class="search__type" name="search__type">
+						<option value="tenLaiXe">Ten lai xe</option>
+						<option value="cmtLaiXe">CMT lai xe</option>
+						<option value="tenPhuXe">Ten phu xe</option>
+						<option value="cmtPhuXe">CMT phu xe</option>
+						<option value="diemDau">Diem dau</option>
+						<option value="diemCuoi">Diem cuoi</option>
+						<option value="dauCuoi">Diem dau-Diem cuoi</option>
+						<option value="ngayKhoiHanh" class="dateFind">Ngay khoi hanh</option>
+						<option value="bienSoXe">Bien so xe</option>
+					</select>
+					<input type="text" name="keyword" class="typeSearch" th:value="${keyword}"/>
+					<input type="submit" value="Search" />
+					<input type="submit" formaction="/chuyenxe" value="Refresh">
+				</form>
+                                <br>
+                                <form method="get" action="/chuyenxe/sort" >
+                                    <select name="sort__type"  >
+										<option value="Default">Default</option>
+										<option value="tenLaiXe">Ten lai xe</option>
+										<option value="cmtLaiXe">CMT lai xe</option>
+										<option value="tenPhuXe">Ten phu xe</option>
+										<option value="cmtPhuXe">CMT phu xe</option>
+										<option value="diemDau">Diem dau</option>
+										<option value="diemCuoi">Diem cuoi</option>
+										<option value="ngayKhoiHanh">Ngay khoi hanh</option>
+										<option value="bienSoXe">Bien so xe</option>
+										<option value="giaVe">Gia ve</option>
+										<option value="soKhach">So khach</option>
+                                    </select>
+                                    <input type="submit" value="Sort" />
+                                </form>
+				<p th:text="${error}" style="color: red; font-weight: 600;"></p>
+				<span class="insert">
+					<a th:href="@{/chuyenxe/insert}">Thêm mới Chuyến xe</a>
+				</span>
+				<form>
+					<div class="table__content">
+						<table>
+							<tbody>
+							<tr>
+								<th>ID</th>
+								<th>Số khách</th>
+								<th>Giá vé (VNĐ)</th>
+								<th>Ngày khởi hành</th>
+								<th>Lái xe</th>
+								<th>Phụ xe</th>
+								<th>Tuyến xe</th>
+								<th>Xe khách</th>
+								<th>Action</th>
+							</tr>
+							<tr th:each="chuyenXe : ${listChuyenXe}">
+								<td th:text="${chuyenXe.id}">a</td>
+								<td th:text="${chuyenXe.soKhach}">a</td>
+								<td th:text="${chuyenXe.giaVe}">duy thanh</td>
+								<td th:text="${chuyenXe.ngayKhoiHanh}">t</td>
+								<td>
+									<p th:text="${'Tên: '+ chuyenXe.laiXe.ten}"></p>
+									<p th:text="${'CMT: '+ chuyenXe.laiXe.CMT}"></p>
+								</td>
+								<td>
+									<p th:text="${'Tên: '+ chuyenXe.phuXe.ten}"></p>
+									<p th:text="${'CMT: '+ chuyenXe.phuXe.CMT}"></p>
+								</td>
+								<td>
+									<p th:text="${'Lịch trình: '+chuyenXe.tuyenXe.diemDau+'-'+chuyenXe.tuyenXe.diemCuoi}"></p>
+								</td>
+								<td>
+									<p th:text="'BSX: '+ ${chuyenXe.xeKhach.bienSo}"></p>
+								</td>
+								<td><a th:href="@{/chuyenxe/update(id=${chuyenXe.id})}">Edit</a>
+									<a th:href="@{/chuyenxe/delete(id=${chuyenXe.id})}">Delete</a>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var dateFind=document.getElementsByClassName("dateFind")[0];
+		var typeSearch=document.getElementsByClassName("typeSearch")[0];
+		var searchTypeSelect= document.getElementsByClassName("search__type")[0];
+		searchTypeSelect.addEventListener("change", function (){
+			if(dateFind.selected) typeSearch.setAttribute("type","date");
+			else typeSearch.setAttribute("type","text");
+		});
+	</script>
+</body>
+</html>

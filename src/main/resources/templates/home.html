@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tai xe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+
+*{
+    box-sizing: inherit;
+}
+html{
+    font-size:62.5%;
+    line-height: 1.6rem;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    background-color: #88807e;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url(https://cdnimg.vietnamplus.vn/uploaded/qfsqy/2021_06_08/ttxvn_xe_khach.jpg);
+}
+p.content__slogan{
+    position: absolute;
+    top: 0px;
+    left : 320px;
+    font-size: 4.2rem;
+    color: rgb(92, 126, 172);
+    font-weight: 600;
+}
+p.content__slogan--detail{
+    position: absolute;
+    top: 240px;
+    left : 210px;
+    font-size: 2rem;
+    color: rgb(139, 122, 26);
+    font-weight: 600;
+    display: none;
+}
+.content{
+    /* border: 2px solid #dd9595; */
+    position: relative;
+    top: 0;
+    left: 0;
+    /* top: 0px;
+    left: 0px; */
+    /* background-color: #f5ab94; */
+}
+.content__navbar{
+    position: absolute;
+    top: 70px;
+    left: 180px;
+}
+ul.content__navbar-list{
+    font-size: 2rem;
+    list-style: none;
+    border: 2px solid #dd9595;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+li.content__navbar-item{
+    padding: 20px;
+
+}
+li.content__navbar-item a{
+    text-decoration: none;
+    font-weight: 600;
+    color: rgb(86, 95, 221);
+    line-height: 100%;
+}
+li.content__navbar-item:hover a.link{
+    color:rgb(235 226 226);
+}
+li.content__navbar-item:hover{
+    background-color: rgb(112 205 55);
+}
+li.content__navbar-item-stat{
+    position: relative;
+}
+div.content__navbar-stat{
+    position: absolute;
+    top: 63px;
+    right: 0px;
+    width: 123%;
+    text-align: center;
+    background-color: #c4dbd9;
+    display: none;
+}
+
+li.content__navbar-item-stat:hover .content__navbar-stat{
+    display: block;
+    background-color: rgb(220 244 254);
+}
+.stat::before{
+    content:"";
+    width: 125px;
+    height: 10px;
+    display:block;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    /* background-color: black; */
+}
+.stat{
+    padding: 10px 10px 10px 5px;
+
+}
+.stat a{
+    font-size: 17px;
+}
+.stat:hover {
+    background-color: rgb(177, 161, 161);
+    transition: 0.3s;
+}
+.stat:hover a{
+    transition: 0.3s;
+    cursor: pointer;
+    color:rgb(192, 18, 12);
+}
+
+
+</style>
+<body>
+<div class="content">
+    <div class="content__navbar">
+        <ul class="content__navbar-list">
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/taixe}">Quản lý tài xế</a>
+            </li>
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/xekhach}">Quản lý xe khách</a>
+            </li>
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/tuyenxe}">Quản lý tuyến xe</a>
+            </li>
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/chuyenxe}">Quản lý chuyến xe</a>
+            </li>
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/bacluong}">Quản lý bậc lương</a>
+            </li>
+            <li class="content__navbar-item content__navbar-item-stat">
+                <a class="link" href="">Thống kê</a>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="content__navbar-stat">
+                    <div class="stat"><a  th:href="@{/taixe/luongthang}">Lương tài xế</a></div>
+                    <div class="stat"><a  th:href="@{/xekhach/thongke}">Doanh thu xe</a></div>
+                    <div class="stat"><a  th:href="@{/taixe/chuyendachay}">Các chuyến xe đã chạy trong tháng của tài xế </a></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <p class="content__slogan">Hệ thống quản lý hãng vận tải hành khách</p>
+    <p class="content__slogan--detail">Hệ thống cho phép quản lý các tài xê,
+        các loại xe khách, các tuyến xe chạy, các chuyến xe và xem các loại thống kê</p>
+    <div class="content__table">
+
+    </div>
+
+</div>
+</body>
+</html>

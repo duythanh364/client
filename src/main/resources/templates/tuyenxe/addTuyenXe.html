@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/header.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>Thêm mới Tuyến xe</title>
+    </head>
+        <style>
+            html{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color:#495a5e;
+
+            }
+            .insert{
+
+                padding: 0;
+                margin: 0;
+            }
+            body{
+                margin: 0;
+                padding : 0;
+                background-color: #aebce4;
+            }
+            header { 
+                height: 70px;
+                width: 80%;
+                background-color: rgb(231 215 230);
+                margin: auto;
+                margin-bottom: 15px;
+                display: flex;
+                justify-content: center;
+            }
+            .container {
+                height: 450px;
+                width: 80%;
+                background-color: #d0d1e1;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+            }
+            .wrapper{
+                width: 50%;
+            }
+            .main__title{
+                font-size: 30px;
+            }
+            .title{
+                display: block;
+                font-size: 30px;
+                padding-left: 170px;
+            }
+            input,select{
+                display: block;
+                width: 300px;
+            }
+            span.button{
+                display: flex;
+                justify-content: center;
+                padding-top: 20px;
+            }
+            button{
+                border-radius: 5px;
+                width: 30%;
+                height: 35px;
+                background-color: #eccccc;
+            }
+            td{
+                font-weight: 500;
+            }
+            tr{
+                /* display: block; */
+                margin-top: 10px;
+            }
+            button.button__back{
+                position: fixed;
+                width: 100px;
+                left: 160px;
+            }
+        </style>
+        <body>
+            <div class="insert">
+                <div th:replace="layout/header"> </div>
+                <div class="container">
+                    <div class="wrapper">
+                        <span class="title">Thêm mới tuyến xe</span>
+                        <p  style="color:#ff0026; font-family: 'Segoe UI'; font-size: 23px; font-weight: 700;"
+                            th:text="${error}"> </p>
+                        <form method="POST" th:object="${tuyenXe}">
+                            <div class="table__content">
+                                <table>
+                                    <tr>
+                                        <td>Điểm đầu</td>
+                                        <td><input type="text" th:field="*{diemDau}"  required="required" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Điểm cuối</td>
+                                        <td><input type="text" th:field="*{diemCuoi}" required="required" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Độ dài</td>
+                                        <td><input type="number" min=1 th:field="*{doDai}" required="required" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Đô phức tạp</td>
+                                        <td><input type="number" min=1 max=3 th:field="*{doPhucTap}"  required="required"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td></td>
+                                        <td><span class="button"><button type="submit">Lưu</button></span></td>
+                                    </tr>
+                                </table>
+                                <span class="button">
+                                    <button class="button__back">
+                                        <i class="fa fa-backward" aria-hidden="true"></i>
+                                        Trở về
+                                    </button>
+                                </span>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <script type="text/javascript">
+                document.getElementsByClassName("button__back")[0].onclick = function () {
+                    window.location = ("http://localhost:8080/tuyenxe"), true;
+                };
+            </script>
+        </body>
+</html>

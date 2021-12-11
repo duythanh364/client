@@ -1,0 +1,31 @@
+
+<div class="content header">
+    <div class="content__navbar">
+        <ul class="content__navbar-list">
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/taixe}">Quản lý tài xế</a>
+            </li>
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/xekhach}">Quản lý xe khách</a>
+            </li>
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/tuyenxe}">Quản lý tuyến xe</a>
+            </li>
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/chuyenxe}">Quản lý chuyến xe</a>
+            </li>
+            <li class="content__navbar-item">
+                <a class="link" th:href="@{/bacluong}">Quản lý bậc lương</a>
+            </li>
+            <li class="content__navbar-item content__navbar-item-stat">
+                <a class="link" href="">Thống kê</a>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="content__navbar-stat">
+                    <div class="stat"><a  th:href="@{/taixe/luongthang}">Lương tài xế</a></div>
+                    <div class="stat"><a  th:href="@{/xekhach/thongke}">Doanh thu xe</a></div>
+                    <div class="stat"><a  th:href="@{/taixe/chuyendachay}">Các chuyến xe đã chạy trong tháng của tài xế </a></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
