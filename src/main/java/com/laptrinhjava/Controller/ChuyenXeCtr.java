@@ -180,8 +180,8 @@ public class ChuyenXeCtr {
             model.addAttribute("listTaiXe", listTaiXe);
             model.addAttribute("listXeKhach", listXeKhach);
             model.addAttribute("listTuyenXe", listTuyenXe);
-
-            return "chuyenxe/addChuyenXe";
+            // day 1 loi
+            return "chuyenxe/editChuyenXe";
         }
         chuyenXe.setPhuXe(phuXe);
         chuyenXe.setTuyenXe(tuyenXe);

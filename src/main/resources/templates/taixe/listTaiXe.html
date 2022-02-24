@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <title>Danh sách Tài xế</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="/header.css">
 </head>
 <style>
     html {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #495a5e;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #ffffff;
 
-        }
+    }
     .insert {
         padding: 0;
         margin: 0;
-    }
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: #aebce4;
     }
     header {
         height: 70px;
@@ -31,17 +28,17 @@
         justify-content: center;
     }
     .container {
-        height: 530px;
-        width: 80%;
-        background-color: #d0d1e1;
+        height: 625px;
+        width: 100%;
+        /* background-color: #d0d1e1; */
         margin: auto;
         display: flex;
         justify-content: center;
-        overflow: scroll;
+        overflow-y: scroll;
     }
     .wrapper {
         width: 98%;
-        align-items: center;
+        text-align: center;
     }
     .main__title {
         font-size: 30px;
@@ -52,11 +49,9 @@
         display: flex;
         justify-content: center;
         text-decoration: none;
-        color: #086177;
+        color: #ffffff;
     }
-    .title:hover {
-        color: #082878FF;
-    }
+
     input {
         display: block;
         width: 300px;
@@ -99,51 +94,67 @@
 
     span.insert a {
         text-decoration: none;
-        color: #086177;
+        color: #ffffff;
         font-size: 20px;
         font-weight: 600;
 
     }
 
     span.insert:hover a {
-        color: rgb(173, 24, 163);
+        color: rgb(230, 100, 100);
+        cursor: pointer;
     }
 
     .table__content {
-        width: 100%;
+        width: 95%;
         display: flex;
         justify-content: center;
         padding-left: 10px;
+
     }
 
     table {
         width: 100%;
+        /*border: 1px solid rgba(255,255,255,0.3);*/
+        /*box-shadow: 0 0 20px rgba(0,0,0,0.1);*/
     }
 
     th, td {
-        border: 2px solid #999999;
-
+        /* border: 2px solid #999999; */
+        padding: 5px;
+        background-color: rgb(233 197 197);
+        color: rgb(94 15 15);
+        font-weight: 450;
     }
 
+    /* ------ */
+    th{
+        background-color: rgb(205 132 132);
+
+        font-weight: normal;
+        text-align: center;
+        color: white;
+    }
+    /* ------ */
     tbody {
-        display: inline-block;
+        /* display: inline-block; */
         border: 2px solid #999999;
     }
 
     td a:hover {
-        color: rgb(173, 24, 163);
+        color: rgb(230, 100, 100);
         cursor: pointer;
     }
 
     input[type="submit"] {
-        color: #086177;
+        color: #205437;
         font-size: 15px;
         font-weight: 700;
         width: 89px;
     }
 
     input[type="submit"]:hover {
-        color: rgb(173, 24, 163);
+        color: rgb(230, 100, 100);
         cursor: pointer;
     }
 
@@ -181,8 +192,8 @@
     }
 </style>
 <body>
+    <div th:replace="layout/header"> </div>
     <div class="insert">
-        <div th:replace="layout/header"> </div>
         <div class="container">
             <div class="wrapper">
                 <a th:href="@{/taixe}"class="title">Danh sách tài xế</a>
@@ -196,7 +207,7 @@
                     Không tìm thấy tài xế
                 </p>
                 <form class="search" th:action="@{/taixe/search}" th:method="GET">
-                    <span>Tìm kiếm theo</span>
+
                     <select name="search__type">
                         <option value="ten">Tên</option>
                         <option value="CMT">CMT</option>
@@ -213,13 +224,14 @@
                         <option value="thamNien">Thâm niên</option>
                     </select>
                     <input type="submit" value="Sort" />
+                    <form th:action="@{/taixe}" th:method="GET" style="padding-bottom:15px;">
+                        <input class="submit__luong" type="submit" value="Refresh"/>
+                    </form>
                 </form>
                 <span class="insert">
                         <a th:href="@{/taixe/insert}">Thêm mới tài xế</a>
                 </span>
-                <form th:action="@{/taixe}" th:method="GET" style="padding-bottom:15px;">
-                    <input class="submit__luong" type="submit" value="Refresh"/>
-                </form>
+
                 <form>
                     <div class="table__content">
                         <table>

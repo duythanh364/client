@@ -79,7 +79,7 @@ public class XeKhachCtr {
         return "redirect:/xekhach";
     }
 
-    @GetMapping("/thongke")
+    @GetMapping("/thongkedoanhthu")
     public String getThongKe(Model model) {
         HashMap<XeKhach, Double> mapDoanhThu = new HashMap<>();
         HashMap<XeKhach, String> mapDoanhThuConvert = new HashMap<>();
@@ -111,7 +111,7 @@ public class XeKhachCtr {
         return "xekhach/thongKeDoanhThuXeKhach";
     }
 
-    @PostMapping("/thongke")
+    @PostMapping("/thongkedoanhthu")
     public String postThongKe(@RequestParam("start") String start,
                               @RequestParam("end") String end,
                               Model model) {

@@ -18,13 +18,13 @@ import java.util.*;
 public class TaiXeCtr {
     RestTemplate rest= new RestTemplate();
     private int currentLuongMonth,currentLuongYear,currentChuyenMonth,currentChuyenYear;
-
+    private List<TaiXe> listTaiXeSort= new ArrayList<>();
     @GetMapping
     public String getAll(Model model){
         List<TaiXe> list = Arrays.asList(rest.getForObject("https://transportnhom14server.herokuapp.com/api/taixe", TaiXe[].class));
-
         list.sort(Comparator.comparing((TaiXe taiXe) -> taiXe.getId()));
 
+        listTaiXeSort = new ArrayList<>(list);
         model.addAttribute("listTaiXe",list);
         return "taixe/listTaiXe";
     }
@@ -95,6 +95,7 @@ public class TaiXeCtr {
             @RequestParam("search__type") String type){
         List<TaiXe> list = Arrays.asList(rest.getForObject("https://transportnhom14server.herokuapp.com/api/taixe/search/{search__type}/{key}",TaiXe[].class,type,key));
         if(list.size() != 0) {
+            listTaiXeSort = new ArrayList<>(list);
             model.addAttribute("listTaiXe",list);
         }
         else  {
@@ -171,7 +172,7 @@ public class TaiXeCtr {
             // tinh luong trong thang
             Map<String,Integer> mapLaiXe= rest.getForObject("https://transportnhom14server.herokuapp.com/api/thongke/sochuyenlaixe/{month}/{year}",Map.class,currentLuongMonth,currentLuongYear);
             Map<String,Integer> mapPhuXe= rest.getForObject("https://transportnhom14server.herokuapp.com/api/thongke/sochuyenphuxe/{month}/{year}",Map.class,currentLuongMonth,currentLuongYear);
-            Map<String,Double> mapLuong= rest.getForObject("https://transportnhom14server.herokuapp.com/api/thongke/luongthang/{month}/{year}",Map.class,currentLuongMonth,currentLuongYear);
+            Map<String,Double> mapLuong=  rest.getForObject("https://transportnhom14server.herokuapp.com/api/thongke/luongthang/{month}/{year}",Map.class,currentLuongMonth,currentLuongYear);
 
             Map<Integer, Integer> mapLaiXeConvert= new  HashMap<>();
             Map<Integer, Integer> mapPhuXeConvert= new  HashMap<>();

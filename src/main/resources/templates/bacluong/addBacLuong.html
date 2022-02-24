@@ -11,84 +11,89 @@
 <style>
 	html{
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		color:#495a5e;
+		color: #ffffff;
 	}
-.insert{
-    padding: 0;
-    margin: 0;
-}
-body{
-    margin: 0;
-    padding : 0;
-    background-color: #aebce4;
-}
-header { 
-	height: 70px;
-	width: 80%;
-	margin: auto;
-	margin-bottom: 15px;
-	display: flex;
-	justify-content: center;
-	background-color: rgb(231 215 230);
-}
-.container {
-	height: 450px;
-	width: 80%;
-	margin: auto;
-	display: flex;
-	justify-content: center;
-	background-color: #d0d1e1;
-}
-.wrapper{
-    width: 50%;
-}
-.main__title{
-    font-size: 30px;
-}
-.title{
-    display: block;
-    font-size: 30px;
-    padding-left: 170px;
-}
-input,select{
-    display: block;
-    width: 300px;
-}
-span.button{
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-}
-button{
-    border-radius: 5px;
-    width: 30%;
-    height: 35px;
-    background-color: #eccccc;
-}
-td{
-    font-weight: 500;
-}
-tr{
-
-    margin-top: 10px;
-}
-	button.button__back{
-		position: fixed;
-		width: 100px;
-		left: 160px;
+	.insert{
+		padding: 0;
+		margin: 0;
+	}
+	/* xoa the body o day*/
+	header {
+		height: 70px;
+		width: 80%;
+		margin: auto;
+		margin-bottom: 15px;
+		display: flex;
+		justify-content: center;
+		background-color: rgb(231 215 230);
+	}
+	.container {
+		height: 625px;
+		width: 100%;
+		/* background-color: #d0d1e1; */
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		overflow-y: scroll;
+	}
+	.wrapper{
+		width: 98%;
+		text-align: center;
+	}
+	.main__title{
+		font-size: 30px;
+	}
+	.title{
+		display: block;
+		font-size: 30px;
+		padding-bottom: 60px;
+	}
+	input,select{
+		display: block;
+		width: 300px;
+	}
+	span.button{
+		display: flex;
+		justify-content: center;
+		padding: 20px 25px 0px 2px;
+	}
+	button{
+		border-radius: 5px;
+		width: 34%;
+		height: 35px;
+		background-color: #eccccc;
+	}
+	td{
+		font-weight: 500;
+		text-align: left;
+	}
+	tr{
+		font-size: 18px;
+		margin-top: 10px;
 	}
 	p.error{
 		margin-top: 0;
 		margin-bottom: 0;
 		height: 35px;
 	}
+	.table__content {
+		width: 95%;
+		display: flex;
+		justify-content: center;
+		padding-left: 10px;
+	}
+
+	table {
+		width: 48%;
+	}
 </style>
 <body>
+<div th:replace="layout/header"> </div>
 	<div class="insert">
-		<div th:replace="layout/header"> </div>
+
 		<div class="container">
 			<div class="wrapper">
-				<span class="title">Thêm mới tài xế</span>
+				<span class="title">Thêm mới bậc lương</span>
 				<p class="error" th:if="${error}"
 				   style="color:#ff0026;
                    font-family: 'Segoe UI';

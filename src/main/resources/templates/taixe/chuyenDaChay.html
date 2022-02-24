@@ -10,55 +10,50 @@
 <style>
     html {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #495a5e;
+        color: #ffffff;
+
     }
     .insert {
         padding: 0;
         margin: 0;
     }
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: #aebce4;
-    }
     header {
         height: 70px;
         width: 80%;
-        background-color: rgb(231 215 230);
+        /*background-color: rgb(231 215 230);*/
         margin: auto;
         margin-bottom: 15px;
         display: flex;
         justify-content: center;
     }
     .container {
-        height: 530px;
-        width: 80%;
-        background-color: #d0d1e1;
+        height: 625px;
+        width: 100%;
+        /*background-color: #d0d1e1;*/
         margin: auto;
         display: flex;
         justify-content: center;
-        overflow: scroll;
+        overflow-y: scroll;
     }
-    .wrapper {
-        width: 90%;
-        align-items: center;
+    .wrapper{
+        width: 98%;
+        text-align: center;
     }
-    .main__title {
+    .main__title{
         font-size: 30px;
     }
-    .title {
+    .title{
         display: block;
         font-size: 30px;
         display: flex;
         justify-content: center;
         text-decoration: none;
+        color: #ffffff;
     }
-    .title:hover {
-        color: #086177;
-    }
+
     input {
         display: block;
-        width: 300px;
+        /*width: 300px;*/
     }
 
     span.button {
@@ -107,7 +102,7 @@
         color: #495a5e;
     }
     .table__content {
-        width: 100%;
+        width: 95%;
         display: flex;
         justify-content: center;
         padding-left: 10px;
@@ -116,26 +111,36 @@
         width: 100%;
     }
     th, td {
-        border: 2px solid #999999;
+        padding: 5px;
+        background-color: rgb(233 197 197);
+        color: rgb(94 15 15);
+        font-weight: 450;
 
     }
-    tbody {
-        display: inline-block;
-        border: 2px solid #999999;
-        margin-top: 58px;
+    /*------*/
+    th{
+        background-color: rgb(205 132 132);
+
+        font-weight: normal;
+        text-align: center;
+        color: white;
     }
-    td a:hover {
-        color: rgb(173, 24, 163);
+    tbody{
+        /*display: inline-block;*/
+        border : 2px solid #999999;
+    }
+    td a:hover{
+        color: rgb(230, 100, 100);
         cursor: pointer;
     }
     input[type="submit"] {
-        color: #086177;
+        color: #205437;
         font-size: 15px;
         font-weight: 700;
         width: 95px;
     }
     input[type="submit"]:hover {
-        color: rgb(173, 24, 163);
+        color: rgb(230, 100, 100);
         cursor: pointer;
     }
     input[type="text"] {
@@ -150,12 +155,14 @@
     .calculate{
         font-size: 20px;
         font-weight: 400;
-        display: flex;
-        justify-content: left;
-        padding-top: 20px;
+        /*display: flex;*/
+        /*justify-content: left;*/
+        justify-content: center;
+        /*padding-top: 20px;*/
+        margin-top: 20px ;
     }
     .calculate span{
-        margin-left: 173px;
+        /*margin-left: 173px;*/
     }
 </style>
 <body>
@@ -176,7 +183,7 @@
             </form>
             <form class="calculate" th:action="@{/taixe/chuyendachay}" th:method="POST">
                 <span class="span__title">Tháng, năm</span>
-                <input class="month" style="width: 77px; margin-right: 18px; margin-left: 68px;" name="month" placeholder="Tháng" required="required" type="text"/>
+                <input class="month" style="width: 77px; margin-right: 18px; margin-left: 33px;" name="month" placeholder="Tháng" required="required" type="text"/>
                 <input class="year" style="width: 161px; margin-left: -5px;" name="year" placeholder="Năm" required="required" type="text"/>
 
                 <input class="submit__luong" style="margin-right: 6px;" type="submit" value="Thống kê"/>
@@ -229,16 +236,6 @@
     </div>
 
 </div>
-<!--<span class="button">-->
-<!--     <button class="button__back">-->
-<!--     <i class="fa fa-backward" aria-hidden="true"></i>-->
-<!--     Trở về-->
-<!--     </button>-->
-<!--</span>-->
-<script type="text/javascript">
-    document.getElementsByClassName("button__back")[0].onclick = function () {
-        window.location.href = ("/");
-    };
-</script>
+
 </body>
 </html>
