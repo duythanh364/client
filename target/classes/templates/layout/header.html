@@ -1,0 +1,30 @@
+<nav>
+    <ul>
+        <li class="logo"><img alt="" src="https://avatars.githubusercontent.com/u/57191540?s=200&v=4"></li>
+        <li>
+            <a th:href="@{/taixe}"><i class="fa fa-id-card" aria-hidden="true"></i>   Tài xế</a>
+        </li>
+        <li>
+            <a th:href="@{/tuyenxe}"><i class="fa fa-calendar" aria-hidden="true"></i>   Tuyến xe</a>
+        </li>
+        <li>
+            <a th:href="@{/xekhach}"><i class="fa fa-bus" aria-hidden="true"></i>   Xe khách</a>
+        </li>
+        <li>
+            <a th:href="@{/chuyenxe}"><i class="fa fa-line-chart" aria-hidden="true"></i>   Chuyến xe</a>
+        </li>
+        <li>
+            <a th:href="@{/bacluong}"><i class="fa fa-money" aria-hidden="true"></i>   Bậc lương</a>
+        </li>
+        <li class="content__navbar-item-stat">
+            <a href=""><i class="fa fa-pie-chart" aria-hidden="true"></i>   Thống kê<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+
+            <div class="content__navbar-stat">
+                <div class="stat"><a class="none"  th:href="@{/taixe/luongthang}">Lương tài xế</a></div>
+                <div class="stat"><a class="none" th:href="@{/xekhach/thongke}">Doanh thu xe</a></div>
+                <div class="stat"><a class="none" th:href="@{/taixe/chuyendachay}">Các chuyến xe đã chạy trong tháng của tài xế </a></div>
+            </div>
+        </li>
+    </ul>
+
+</nav>

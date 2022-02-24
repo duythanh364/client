@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Danh sách Tuyến xe</title>
+	<link rel="stylesheet" href="/header.css">
+</head>
+<style>
+	html {
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		color: #ffffff;
+
+	}
+	.insert{
+
+		padding: 0;
+		margin: 0;
+	}
+	body{
+		/*margin: 0;*/
+		/*padding : 0;*/
+		/*background-color: #aebce4;*/
+	}
+	header {
+		height: 70px;
+		width: 80%;
+		background-color: rgb(231 215 230);
+		margin: auto;
+		margin-bottom: 15px;
+		display: flex;
+		justify-content: center;
+	}
+	.container {
+		height: 625px;
+		width: 100%;
+		/*background-color: #d0d1e1;*/
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		overflow-y: scroll;
+	}
+	.wrapper{
+		width: 98%;
+		text-align: center;
+	}
+	.title{
+		font-size: 30px;
+		display: flex;
+		justify-content: center;
+		text-decoration: none;
+		color: #ffffff;
+		font-size: 30px;
+		margin-bottom: 20px;
+	}
+	input{
+		display: block;
+		width: 300px;
+	}
+	span.button{
+		display: flex;
+		justify-content: center;
+		padding-top: 20px;
+	}
+	button{
+		border-radius: 5px;
+		width: 30%;
+		height: 35px;
+		background-color: #ad9a9a;
+	}
+	td{
+		font-weight: 500;
+	}
+	form{
+		display: flex;
+		justify-content: center;
+		height: 30px;
+	}
+	input[type="submit"]{
+		width: 10%;
+		border-radius: 3px;
+	}
+	span.insert{
+		display: flex;
+		justify-content: center;
+		margin: 20px;
+	}
+	span.insert a{
+		text-decoration: none;
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: 600;
+	}
+	span.insert:hover a{
+		color: rgb(230, 100, 100);
+		cursor: pointer;
+	}
+	.table__content{
+		width: 95%;
+		display: flex;
+		justify-content: center;
+		padding-left: 10px;
+		/*padding-left: 50px;*/
+	}
+	table{
+		width: 100%;
+	}
+	th, td {
+		/* border: 2px solid #999999; */
+		padding: 5px;
+		background-color: rgb(233 197 197);
+		color: rgb(94 15 15);
+		font-weight: 450;
+	}
+	th{
+		background-color: rgb(205 132 132);
+
+		font-weight: normal;
+		text-align: center;
+		color: white;
+	}
+	/* ------ */
+	tbody {
+		/* display: inline-block; */
+		border: 2px solid #999999;
+	}
+	td a:hover{
+		color: rgb(230, 100, 100);
+		cursor: pointer;
+	}
+	input[type="submit"]{
+		color: #205437;
+		font-size: 15px;
+		font-weight: 700;
+		width: 89px;
+	}
+	input[type="submit"]:hover {
+		color:rgb(230, 100, 100);
+		cursor: pointer;
+
+	}
+
+</style>
+<body>
+	<div class="insert">
+		<div th:replace="layout/header"> </div>
+		<div class="container">
+			<div class="wrapper">
+				<span class="title">Danh sách tuyến xe</span>
+				<form th:method="get" th:action="@{/tuyenxe/search}">
+                                    <input type="text"  placeholder="Điểm đầu" name="diemDau" /> &nbsp; 
+                                    <input type="text" placeholder="Điểm cuối" name="diemCuoi"/> &nbsp; 
+					<input type="submit" value="Search" />
+                                        <input type="submit" formaction="/tuyenxe" value="Refresh">
+				</form>
+                                <br>
+                                <form th:method="get" th:action="@{/tuyenxe/sort}">
+                                    <select name="sort__type"  >
+                                        <option value="Default">Default</option>
+                                        <option value="diemDau">Điểm đầu</option>
+                                        <option value="diemCuoi">Điểm cuối</option>
+                                        <option value="doDai">Độ dài</option>
+                                        <option value="doPhucTap">Độ phức tạp</option>     
+                                    </select>
+                                    <input type="submit" value="Sort" />
+                                </form>
+                                <br>
+				<span class="insert">
+					<a th:href="@{/tuyenxe/insert}">Thêm mới tuyến xe</a>
+				</span>
+				<form>
+					<div class="table__content">
+						<table>
+							<tbody>
+							<tr>
+								<th>ID</th>
+								<th>Điểm đầu</th>
+								<th>Điểm cuối</th>
+								<th>Độ dài (Km)</th>
+								<th>Đô phức tạp</th>
+								<th>Action</th>
+							</tr>
+							<tr th:each="tuyenXe : ${listTuyenXe}">
+								<td th:text="${tuyenXe.id}">a</td>
+								<td th:text="${tuyenXe.diemDau}">a</td>
+								<td th:text="${tuyenXe.diemCuoi}"></td>
+								<td th:text="${tuyenXe.doDai}">t</td>
+								<td th:text="${tuyenXe.doPhucTap}">r</td>
+								<td><a th:href="@{/tuyenxe/update(id=${tuyenXe.id})}">Edit</a>
+									<a th:href="@{/tuyenxe/delete(id=${tuyenXe.id})}">Delete</a>
+								</td>
+							</tr>
+							</tbody>
+					  </table>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+		
+</body>
+</html>

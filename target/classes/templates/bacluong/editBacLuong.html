@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cập nhật bậc lương</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/header.css">
+</head>
+<style>
+	html{
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		color: #ffffff;
+	}
+	.insert{
+		padding: 0;
+		margin: 0;
+	}
+	/* xoa the body o day*/
+	header {
+		height: 70px;
+		width: 80%;
+		margin: auto;
+		margin-bottom: 15px;
+		display: flex;
+		justify-content: center;
+		background-color: rgb(231 215 230);
+	}
+	.container {
+		height: 625px;
+		width: 100%;
+		/* background-color: #d0d1e1; */
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		overflow-y: scroll;
+	}
+	.wrapper{
+		width: 98%;
+		text-align: center;
+	}
+	.main__title{
+		font-size: 30px;
+	}
+	.title{
+		display: block;
+		font-size: 30px;
+		padding-bottom: 60px;
+	}
+	input,select{
+		display: block;
+		width: 300px;
+	}
+	span.button{
+		display: flex;
+		justify-content: center;
+		padding: 20px 25px 0px 2px;
+	}
+	button{
+		border-radius: 5px;
+		width: 34%;
+		height: 35px;
+		background-color: #eccccc;
+	}
+	td{
+		font-weight: 500;
+		text-align: left;
+	}
+	tr{
+		font-size: 18px;
+		margin-top: 10px;
+	}
+	p.error{
+		margin-top: 0;
+		margin-bottom: 0;
+		height: 35px;
+	}
+	.table__content {
+		width: 95%;
+		display: flex;
+		justify-content: center;
+		padding-left: 10px;
+	}
+
+	table {
+		width: 48%;
+	}
+</style>
+<body>
+<div th:replace="layout/header"> </div>
+	<div class="insert">
+
+			<div class="container">
+				<div class="wrapper">
+					<span class="title">Cập nhật thông tin bậc lương</span>
+					<form method="POST" th:object="${bacluong}">
+						<div class="table__content">
+							<table>
+								<tr>
+									<td>ID:</td>
+									<td th:text="*{id}">Id</td>
+								</tr>
+								<tr>
+									<td>Hệ số lương</td>
+									<td><input type="text" th:field="*{heSoLuong}" required="required" /></td>
+								</tr>
+								<tr>
+									<td>Lương cơ bản</td>
+									<td><input type="text" th:field="*{luongCoBan}" required="required" /></td>
+								</tr>
+								<tr>
+									<td>Lương mỗi chuyến</td>
+									<td><input type="text" th:field="*{luongMoiChuyen}" required="required" /></td>
+								</tr>
+
+								<tr>
+									<td></td>
+									<td><span class="button"><button type="submit">Lưu</button></span></td>
+								</tr>
+							</table>
+						</div>
+					</form>
+				</div>
+			</div>
+	</div>
+</body>
+</html>

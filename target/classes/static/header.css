@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: linear-gradient(
+            70deg,rgb(233 159 159 / 50%),rgb(68 56 63 / 50%)), url(images/background.jpg);
+    background-color: #aebce4;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 230px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #dd959552;
+}
+nav ul li {
+    list-style: none;
+}
+nav ul li a {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    padding: 17px 0 25px 38px;
+}
+nav ul li a:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 0%;
+    height: 100%;
+    background: #e3e9f7;
+    border-radius: 40px 0px 0px 40px;
+    z-index: -1;
+    transition: all 300ms ease-in-out;
+}
+nav ul li a:hover {
+    color: #2b2626;
+}
+nav ul li a:hover:before {
+    width: 95%;
+}
+nav ul li a.none{
+    padding: 15px 0px 15px 0px;
+
+}
+li.content__navbar-item-stat{
+    position: relative;
+}
+div.content__navbar-stat{
+    position: absolute;
+    top: -36px;
+    right: -193px;
+    width: 84%;
+    text-align: center;
+    background-color: #c4dbd9;
+    display: none;
+}
+
+li.content__navbar-item-stat:hover .content__navbar-stat{
+    display: block;
+    background-color: rgb(231 110 110 / 75%);
+}
+.stat:hover{
+    line-height: 100%;
+    background-color: #e0cee3;
+    cursor: pointer;
+}
+i.fa-arrow-right{
+    padding-left: 50px;
+}
+.wrapper {
+    margin-left: 230px;
+}
+.section {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+.box-area h2 {
+    text-transform: uppercase;
+    font-size: 50px;
+}
+.box-area p {
+    line-height: 2;
+}
+.box-area {
+    width: 75%;
+}
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 25px auto;
+}
+.logo img {
+    width: 100%;
+}

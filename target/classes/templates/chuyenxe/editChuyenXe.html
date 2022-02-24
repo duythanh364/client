@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+            <title>Cập nhật Chuyến xe</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/header.css">
+                </head>
+                <style>
+                    html{
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        color: #ffffff;
+                    }
+                    .insert{
+
+                        padding: 0;
+                        margin: 0;
+                    }
+                    header { 
+                        height: 70px;
+                        width: 80%;
+                        background-color: rgb(231 215 230);
+                        margin: auto;
+                        margin-bottom: 15px;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .container {
+                        height: 625px;
+                        width: 100%;
+                        /*background-color: #d0d1e1;*/
+                        margin: auto;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .wrapper{
+                        width: 98%;
+                        text-align: center;
+                    }
+                    .main__title{
+                        font-size: 30px;
+                    }
+                    .title{
+                        /*display: block;*/
+                        /*font-size: 30px;*/
+                        /*padding-left: 80px;*/
+                        margin-top: 20px;
+                        display: block;
+                        font-size: 30px;
+                        padding-bottom: 20px;
+                        text-align: center;
+                    }
+                    input,select{
+                        display: block;
+                        width: 300px;
+                    }
+                    span.button{
+                        display: flex;
+                        justify-content: center;
+                        padding:20px 25px 0px 2px;
+                    }
+                    button{
+                        border-radius: 5px;
+                        width: 34%;
+                        height: 35px;
+                        background-color: #eccccc;
+                    }
+                    td{
+                        font-weight: 500;
+                        text-align: left;
+                    }
+                    tr{
+                        font-size: 18px;
+                        margin-top: 10px;
+                    }
+                    .table__content {
+                        width: 95%;
+                        display: flex;
+                        justify-content: center;
+                        padding-left: 10px;
+                    }
+                </style>
+                <body>
+                    <div class="insert">
+                        <div th:replace="layout/header"> </div>
+                        <div class="container">
+                            <div class="wrapper">
+                                <span class="title">Cập nhật thông tin chuyến xe</span>
+                                <p th:text="${error}" style="color:#ff0026; font-family: 'Segoe UI'; font-size: 23px; font-weight: 700;" ></p>
+                                <form th:method="PUT" th:object="${chuyenXe}">
+                                    <div class="table__content">
+                                        <table>
+
+                                            <tr>
+                                                <td>ID:</td>
+                                                <td th:text="*{id}">Id</td>
+                                                <td><input type="hidden" th:field="*{id}" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Số khách</td>
+                                                <td><input type="text" th:field="*{soKhach}" required="required" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Giá vé</td>
+                                                <td><input type="text" th:field="*{giaVe}" required="required" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ngày khởi hành</td>
+                                                <td><input type="date" th:field="*{ngayKhoiHanh}"  required="required"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Lái xe</td>
+                                                <td>
+                                                    <select class="laixeSelectList" th:name="idTaiXe">
+                                                        <option class="laixeSelectItem" th:each="taiXe : ${listTaiXe}"
+                                                                th:value="${taiXe.id}"
+                                                                th:text="${taiXe.ten}">
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phụ xe</td>
+                                                <td>
+                                                    <select class="phuxeSelectList" th:name="idPhuXe">
+                                                        <option class="phuxeSelectItem" th:each="taiXe : ${listTaiXe}"
+                                                                th:value="${taiXe.id}"
+                                                                th:text="${taiXe.ten}">
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tuyến xe</td>
+                                                <td>
+                                                    <select th:name="idTuyenXe">
+                                                        <option th:each="tuyenXe : ${listTuyenXe}"
+                                                                th:value="${tuyenXe.id}"
+                                                                th:text="${tuyenXe.diemDau+' - '+tuyenXe.diemCuoi}">
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Xe khách</td>
+                                                <td>
+                                                    <select class="list_options" th:name="idXeKhach">
+                                                        <option th:each="xeKhach : ${listXeKhach}"
+                                                                th:value="${xeKhach.id}"
+                                                                th:text="${xeKhach.bienSo}"
+                                                                th:max="${xeKhach.soGhe-2}"
+                                                                class="options"
+                                                        >
+                                                        </option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td><span class="button"><button type="submit">Lưu</button></span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        // check loi phu xe lai xe
+                        // lai xe chon roi thi phu xe disable=true
+                        var laiXeSelect= document.getElementsByClassName("laixeSelectList")[0];
+                        var recentIndexLaiXe=0;
+                        // document.getElementsByClassName("phuxeSelectItem")[recentIndexLaiXe].disabled=true;
+                        laiXeSelect.addEventListener("change", function (){
+                            document.getElementsByClassName("phuxeSelectItem")[recentIndexLaiXe].disabled= false;
+                            var indexLaiXe= laiXeSelect.selectedIndex;
+                            document.getElementsByClassName("phuxeSelectItem")[indexLaiXe].disabled=true;
+                            recentIndexLaiXe=indexLaiXe;
+                        });
+                        // phu xe chon roi thi lai xe disable=true
+                        var phuXeSelect= document.getElementsByClassName("phuxeSelectList")[0];
+                        var recentIndexPhuXe=0;
+                        phuXeSelect.addEventListener("change", function (){
+                            document.getElementsByClassName("laixeSelectItem")[recentIndexPhuXe].disabled= false;
+                            var indexPhuXe= phuXeSelect.selectedIndex;
+                            document.getElementsByClassName("laixeSelectItem")[indexPhuXe].disabled=true;
+                            recentIndexPhuXe=indexPhuXe;
+                        });
+
+                    </script>
+                </body>
+                </html>

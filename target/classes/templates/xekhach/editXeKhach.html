@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+            <title>Cập nhật Xe khách</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="/header.css">
+                </head>
+                <style>
+                    html{
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        color: #ffffff;
+                    }
+                    .insert{
+
+                        padding: 0;
+                        margin: 0;
+                    }
+                    header {
+                        height: 70px;
+                        width: 80%;
+                        background-color: rgb(231 215 230);
+                        margin: auto;
+                        margin-bottom: 15px;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .container {
+                        height: 625px;
+                        width: 100%;
+                        /*background-color: #d0d1e1;*/
+                        margin: auto;
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .wrapper{
+                        width: 98%;
+                        text-align: center;
+                    }
+                    .main__title{
+                        font-size: 30px;
+                    }
+                    .title{
+                        /*display: block;*/
+                        /*font-size: 30px;*/
+                        /*padding-left: 80px;*/
+                        margin-top: 20px;
+                        display: block;
+                        font-size: 30px;
+                        padding-bottom: 20px;
+                        text-align: center;
+                    }
+                    input,select{
+                        display: block;
+                        width: 300px;
+                    }
+                    span.button{
+                        display: flex;
+                        justify-content: center;
+                        padding:20px 25px 0px 2px;
+                    }
+                    button{
+                        border-radius: 5px;
+                        width: 34%;
+                        height: 35px;
+                        background-color: #eccccc;
+                    }
+                    td{
+                        font-weight: 500;
+                        text-align: left;
+                    }
+                    tr{
+                        font-size: 18px;
+                        margin-top: 10px;
+                    }
+                    .table__content {
+                        width: 95%;
+                        display: flex;
+                        justify-content: center;
+                        padding-left: 10px;
+                    }
+                </style>
+                <body>
+                    <div class="insert">
+                        <div th:replace="layout/header"> </div>
+                        <div class="container">
+                            <div class="wrapper">
+                                <span class="title">Cập nhật thông tin xe khách</span>
+                                <form th:method="PUT"  th:object="${xeKhach}">
+                                    <div class="table__content">
+                                        <table>
+
+                                            <tr>
+                                                <td>ID:</td>
+                                                <td th:text="*{id}">Id</td>
+                                                <td><input type="hidden" th:field="*{id}" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Biển số</td>
+                                                <td><input type="text" th:field="*{bienSo}" required="required" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Màu xe</td>
+                                                <td><input type="text" th:field="*{mauXe}" required="required" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hãng SX</td>
+                                                <td><input type="text" th:field="*{hangSX}" required="required" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Model</td>
+                                                <td><input type="text" th:field="*{model}"  required="required"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Đời xe</td>
+                                                <td><input type="text" th:field="*{doiXe}" required="required" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Số ghế</td>
+                                                <td><input type="number" min =2 th:field="*{soGhe}" required="required" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Số năm SD</td>
+                                                <td><input type="number" min =0 th:field="*{soNamSD}" required="required" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ngày bảo dưỡng cuối cùng</td>
+                                                <td><input type="date" th:field="*{ngayBaoDuongCuoiCung}" required="required" /></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td><span class="button"><button type="submit">Lưu</button></span></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </body>
+                </html>

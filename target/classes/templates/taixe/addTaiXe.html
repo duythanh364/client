@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="/header.css">
+<head>
+<meta charset="UTF-8">
+<title>Thêm mới Tài Xế</title>
+</head>
+<style>
+	html{
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		color: #ffffff;
+	}
+.insert{
+    padding: 0;
+    margin: 0;
+}
+/* xoa the body o day*/
+header { 
+	height: 70px;
+	width: 80%;
+	margin: auto;
+	margin-bottom: 15px;
+	display: flex;
+	justify-content: center;
+	background-color:  rgb(231 215 230);
+}
+.container {
+	height: 625px;
+	width: 100%;
+	/* background-color: #d0d1e1; */
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	overflow-y: scroll;
+}
+.wrapper{
+	width: 98%;
+	text-align: center;
+}
+.main__title{
+    font-size: 30px;
+}
+.title{
+    display: block;
+    font-size: 30px;
+    padding-bottom: 60px;
+}
+input,select{
+    display: block;
+    width: 300px;
+}
+span.button{
+    display: flex;
+    justify-content: center;
+	padding: 20px 25px 0px 2px;
+}
+button{
+    border-radius: 5px;
+    width: 34%;
+    height: 35px;
+    background-color: #eccccc;
+}
+td{
+    font-weight: 500;
+	text-align: left;
+}
+tr{
+	font-size: 18px;
+    margin-top: 10px;
+}
+	p.error{
+		margin-top: 0;
+		margin-bottom: 0;
+		height: 35px;
+	}
+	.table__content {
+		width: 95%;
+		display: flex;
+		justify-content: center;
+		padding-left: 10px;
+	}
+
+	table {
+		width: 48%;
+	}
+</style>
+<body>
+<div th:replace="layout/header"> </div>
+	<div class="insert">
+
+		<div class="container">
+			<div class="wrapper">
+				<span class="title">Thêm mới tài xế</span>
+				<p class="error" th:if="${error}"
+				   style="color:#ff0026;
+                   font-family: 'Segoe UI';
+                   font-size: 20px;
+                   font-weight: 600;
+                   padding-left: 195px;
+                    ">
+					Tài xế đã tồn tại
+				</p>
+				<form method="POST" th:object="${taixe}">
+					<div class="table__content">
+						<table>
+							<tr>
+							  <td>CMT</td>
+							  <td><input type="text" th:field="*{CMT}" maxlength="12" minlength="12" required="required" /></td>
+							</tr>
+							<tr>
+								<td>Họ tên</td>
+								<td><input type="text" th:field="*{ten}" required="required" /></td>
+							</tr>
+							<tr>
+								<td>Mã bằng lái</td>
+								<td><input type="text" th:field="*{maSoBangLai}" required="required" /></td>
+							</tr>
+							<tr>
+								<td>Loại bằng lái:</td>
+								<td><input type="text" th:field="*{loaiBangLai}"  required="required"/></td>
+							</tr>
+							<tr>
+								<td>Địa chỉ</td>
+								<td><input type="text" th:field="*{diaChi}" required="required" /></td>
+							</tr>
+							<tr>
+								<td>Ngày sinh</td>
+								<td><input type="date" th:field="*{ngaySinh}" required="required" /></td>
+							</tr>
+							<tr>
+								<td>Thâm niên</td>
+								<td><input type="number" min=0 th:field="*{thamNien}" required="required"/></td>
+							</tr>
+							<tr>
+								<td>Bậc lương</td>
+								<td>
+									<select th:name="bacluong">
+										<option th:each="bac: ${listLuong}"
+												th:value="${bac.id}"
+												th:text="${bac.heSoLuong}">
+										</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><span class="button"><button type="submit">Lưu</button></span></td>
+							</tr>
+					  </table>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>
